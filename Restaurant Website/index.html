@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Story+Script&display=swap" rel="stylesheet">
+
+
+
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+
+  <style>
+    /*navbar*/
+    a {
+      text-decoration: none;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 10%;
+      background: white;
+      color: black;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar ul li a {
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar ul li a:hover {
+      color: red;
+    }
+
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+    }
+
+
+    @media (max-width: 768px) {
+      .navbar ul {
+        position: absolute;
+        top: 60px;
+        right: 2px;
+        background: white;
+        flex-direction: column;
+        width: 200px;
+        display: none;
+        padding: 20px;
+        border: 1px solid lightgray;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+
+    /*footer*/
+
+
+    .footer {
+      background: #1c1919;
+      color: white;
+      border-top: 1px solid #ddd;
+      padding: 40px 4% 17px;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 992px) {
+      .footer-container {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .footer-col h3,
+    .footer-col h4 {
+      margin-bottom: 15px;
+    }
+
+    .footer-col p {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.3s;
+    }
+
+    .footer-col ul li a:hover {
+      color: white;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin-right: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 0.95rem;
+      transition: color 0.3s;
+    }
+
+    .social-links a:hover {
+      color: deepskyblue;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 20px;
+      font-size: 0.9rem;
+      color: white;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    #nav-links a {
+      color: #000000;
+      text-decoration: none;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: block;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #nav-links a:before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #ff0000;
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    #nav-links a:hover:before {
+      transform: translateX(0);
+    }
+
+    #nav-links a:hover {
+      color: black;
+
+      font-weight: 1.5%;
+    }
+
+
+    .btn {
+      background-color: red;
+      border-radius: 40px;
+      padding: 15px;
+      color: white;
+      border: none;
+      font-weight: 900;
+      cursor: pointer;
+
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 100px;
+      background-color: #e5e5e5;
+      flex-wrap: wrap;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      margin: 0 50px;
+      max-width: 500px;
+    }
+
+    .hero-text h1 {
+      font-size: 40px;
+      margin-bottom: 20px;
+      font-family: "Story Script", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .hero-text p {
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text button {
+      width: 140px;
+      background-color: red;
+      border-radius: 25px;
+      border: 0;
+      font-size: 16px;
+      padding: 15px;
+      color: white;
+      cursor: pointer;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-image {
+      animation: spin 60s linear infinite;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      height: 350px;
+      width: 350px;
+      max-width: 100%;
+    }
+
+    @media (max-width: 992px) {
+      .hero {
+        padding: 60px 30px;
+      }
+
+      .hero-text {
+        margin: 0 20px 40px 20px;
+        text-align: center;
+        align-items: center;
+      }
+
+      .hero-text h1 {
+        font-size: 32px;
+      }
+
+      .hero-text p {
+        font-size: 18px;
+      }
+
+      .hero-text button {
+        width: auto;
+        padding: 12px 25px;
+        font-size: 15px;
+      }
+
+      .hero-image img {
+        height: 280px;
+        width: 280px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero {
+        flex-direction: column;
+        padding: 40px 15px;
+      }
+
+      .hero-text h1 {
+        font-size: 24px;
+      }
+
+      .hero-text p {
+        font-size: 14px;
+      }
+
+      .hero-image img {
+        height: 200px;
+        width: 200px;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+    }
+
+    .main-content {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    /* About Section */
+    .about {
+      height: auto;
+      width: 100%;
+      padding: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+
+    /* Left Section */
+    .about-left {
+      width: 60%;
+      padding: 30px;
+    }
+
+    .left-upper {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 30px;
+      padding-bottom: 30px;
+    }
+
+    .left-upper img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .main-text {
+      text-align: center;
+      font-size: 50px;
+      margin-bottom: 20px;
+      font-family: "Story Script", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+    }
+
+    .main-text span {
+      color: red;
+    }
+
+    .left-down {
+      width: 95%;
+      border: 5px solid grey;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-left: 30px;
+    }
+
+    .left-down h1 {
+      font-size: 2vw;
+      color: rgba(0, 0, 0, 0.6);
+    }
+
+    .left-down p {
+      font-size: 1.2vw;
+    }
+
+    /* Right Section */
+    .about-right {
+      width: 40%;
+      padding: 30px 40px;
+    }
+
+    .first-para-about {
+      opacity: 0.7;
+      font-size: 1.5vw;
+      margin-bottom: 20px;
+    }
+
+    .list-right {
+      font-size: 1.7vw;
+      margin-left: 20px;
+      margin-bottom: 30px;
+      list-style: none;
+    }
+
+    .list-right li {
+      margin-bottom: 20px;
+    }
+
+    .icon {
+      color: red;
+    }
+
+    .lower-rigth {
+      font-size: 1.2vw;
+      margin-right: 1.5vw;
+    }
+
+    .img-right {
+      height: auto;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 550px) {
+
+      .main-content,
+      .about {
+        flex-direction: column;
+      }
+
+      .about-left,
+      .about-right {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .left-upper {
+        padding-left: 0;
+        padding-bottom: 20px;
+      }
+
+      .left-down {
+        width: 100%;
+        margin-left: 0;
+        padding: 20px;
+        border-width: 3px;
+      }
+
+      .left-down h1,
+      .left-down p,
+      .first-para-about,
+      .list-right,
+      .lower-rigth {
+        font-size: 4vw;
+      }
+
+      .main-text {
+        font-size: 8vw;
+      }
+
+      .first-para-about {
+        font-size: 4vw;
+      }
+
+      .list-right {
+        font-size: 4vw;
+        margin-left: 10px;
+      }
+
+      .img-right {
+        height: auto;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Roboto&display=swap');
+
+
+    .menu-section {
+      max-width: 900px;
+      margin: 60px auto;
+      text-align: center;
+    }
+
+    .menu-heading {
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #bb1e10;
+      display: block;
+      font-family: "Story Script", sans-serif;
+      font-weight: 400;
+      font-style: normal;
+      font-size: 50px;
+    }
+
+
+
+    .menu-categories {
+      font-size: 16px;
+      margin-bottom: 29px;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+      display: block;
+      position: relative;
+      overflow: hidden;
+
+    }
+
+    .menu-categories span {
+      cursor: pointer;
+      position: relative;
+      color: #444;
+    }
+
+    .menu-categories .active {
+      color: #bb1e10;
+      font-weight: 700;
+    }
+
+    .menu-categories .active::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: #bb1e10;
+      bottom: -8px;
+      left: 0;
+      border-radius: 2px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 50px 60px;
+      justify-items: center;
+    }
+
+    .menu-item {
+      text-align: center;
+      max-width: 220px;
+    }
+
+    .menu-item img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 3px 8px rgba(187 30 16 0.25);
+    }
+
+    .menu-item h4 {
+      margin: 14px 0 6px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: capitalize;
+
+    }
+
+    .menu-item p {
+      font-size: 11px;
+      color: #888;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .price {
+      font-weight: 700;
+      font-size: 13px;
+      color: #bb1e10;
+    }
+
+    .menu-item:hover {
+      background-color: #fff0eb;
+      border-radius: 20px;
+      padding: 5px 20px;
+    }
+
+
+
+
+
+    .contact-section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .contact-info {
+      flex: 1 1 350px;
+    }
+
+    .contact-info h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .contact-info p {
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    .contact-info a {
+      color: red;
+      text-decoration: none;
+    }
+
+    .contact-info a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-info img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    .social-icons {
+      margin-top: 25px;
+    }
+
+    .social-icons a {
+      color: black;
+      display: inline-block;
+      margin-right: 15px;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #7ba0db;
+    }
+
+    /* Form */
+    .contact-form {
+      flex: 1 1 450px;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-form form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form label {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 15px;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
+      outline: none;
+      transition: border 0.2s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #7ba0db;
+    }
+
+
+    .contact-form button {
+      padding: 12px;
+      font-size: 20px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .contact-form button:hover {
+      background: white;
+      color: red;
+    }
+
+    @media (max-width: 900px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+      }
+
+      .contact-info img {
+        width: 40vw;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .contact-section {
+        flex-direction: column;
+      }
+
+      .contact-info {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .contact-info img {
+        width: 60vw;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    .why-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .why-left {
+      background-color: #ce1212;
+      color: white;
+      flex: 1 1 320px;
+      padding: 40px 20px;
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .why-left h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .why-left p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .learn-btn {
+      background-color: #e61414;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      cursor: pointer;
+      align-self: flex-start;
+      transition: background-color 0.3s ease;
+    }
+
+    .learn-btn:hover {
+      background-color: white;
+      color: red;
+    }
+
+    .why-cards {
+      flex: 1 1 600px;
+      display: flex;
+      gap: 20px;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      min-width: 280px;
+    }
+
+    .why-card {
+      background: white;
+      padding: 100px 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+      flex: 1 1 180px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .icon-circle {
+      background-color: #fceae8;
+      color: #ce1212;
+      font-size: 28px;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .why-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #212529;
+    }
+
+    .why-card p {
+      font-size: 0.9rem;
+      color: #6c757d;
+      line-height: 1.4;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 991px) {
+      .why-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .why-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        margin-top: 30px;
+      }
+
+      .why-card {
+        flex: 1 1 280px;
+      }
+
+      .why-left {
+        width: 100%;
+        max-width: 600px;
+        text-align: center;
+      }
+
+      .learn-btn {
+        align-self: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .why-left h2 {
+        font-size: 1.8rem;
+      }
+
+      .why-left p {
+        font-size: 0.95rem;
+      }
+
+      .learn-btn {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
+
+      .why-card h3 {
+        font-size: 1rem;
+      }
+
+      .why-card p {
+        font-size: 0.85rem;
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    a {
+      text-decoration: none;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <nav class="navbar">
+    <div class="logo">Taco Tempos</div>
+
+    <ul id="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#contact">Contact</a></li>
+
+
+    </ul>
+
+    <div class="menu-toggle" id="menu-toggle">
+      <i class="bi bi-list"></i>
+    </div>
+    <a href="#contact"><button class="btn">Book a Table</button></a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Enjoy Your Healthy Delicious Food</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto inventore magni voluptates iste .</p>
+        <button>Book a Table</button>
+      </div>
+      <div class="hero-image"><img src="hero-img.png"></div>
+    </section>
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="about" id="about">
+    <h1 class="main-text">Learn More <span>About us</span></h1>
+    <div class="main-content">
+      <div class="about-left">
+        <div class="left-upper">
+          <img src="about.jpg" alt="About Image">
+        </div>
+        <div class="left-down">
+          <h1>Book a Table</h1><br>
+          <p>+91 7990276505</p>
+        </div>
+      </div>
+      <div class="about-right">
+        <p class="first-para-about">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magna aliqua.
+        </p>
+        <ul class="list-right">
+          <li><i class="ri-checkbox-circle-fill icon"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
+          <li><i class="ri-checkbox-circle-fill icon"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
+          </li>
+          <li><i class="ri-checkbox-circle-fill icon"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+            aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
+            pariatur.</li>
+        </ul>
+        <img src="stats-bg.jpg" class="img-right" alt="Statistics Background">
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+  <section class="why-section">
+    <!-- Left Red Block -->
+    <div class="why-left">
+      <h2>Why Choose <br />Yummy</h2>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in
+        reprehenderit Asperiores dolores sed et. Tenetur quia eos. Autem tempore
+        quibusdam vel necessitatibus optio ad corporis.
+      </p>
+      <button class="learn-btn">Learn More &rarr;</button>
+    </div>
+
+    <!-- Right Cards -->
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="icon-circle"><i class="ri-bar-chart-box-line"></i></div>
+        <h3>Corporis voluptates officia eiusmod</h3>
+        <p>
+          Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="icon-circle"><i class="ri-vip-diamond-line"></i></div>
+        <h3>Ullamco laboris ladore lore pan</h3>
+        <p>
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        </p>
+      </div>
+
+      <div class="why-card">
+        <div class="icon-circle"><i class="ri-briefcase-line"></i></div>
+        <h3>Labore consequatur incidid dolore</h3>
+        <p>
+          Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="menu-section" id="menu">
+    <div class="menu-heading">Our Menu</div>
+
+
+    <div class="menu-categories">
+      <span class="active">Starters</span>
+      <span>Breakfast</span>
+      <span>Lunch</span>
+      <span>Dinner</span>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-1.png" />
+          <h4>Magnam Tiste</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$5.95</div>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-2.png" />
+          <h4>Aut Lula</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$14.95</div>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-3.png" />
+          <h4>Est Eligendi</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$8.95</div>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-4.png" />
+          <h4>Eos Lulbusdam</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$12.95</div>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-5.png" />
+          <h4>Eos Lulbusdam</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$12.95</div>
+        </a>
+      </div>
+      <div class="menu-item">
+        <a href="cart.html">
+          <img src="menu-item-6.png" />
+          <h4>Laboriosam Direva</h4>
+          <p>Lorem, deserunt, tortor, fluide</p>
+          <div class="price">$9.95</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <section class="contact-section" id="contact">
+
+
+    <div class="contact-info">
+      <div class="contact-info-text">
+        <h1>Contact Us</h1>
+        <p>We are available for questions, feedback, or collaboration opportunities. Let us know how we can help!</p>
+        <p>You can also contact us at <a href="#">info@example.com</a> for any queries.</p>
+        <div class="social-icons">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+      <img src="contact.jpg" alt="image">
+    </div>
+
+    <div class="contact-form">
+      <form action="#" method="post">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" placeholder="Your Phone Number" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <footer class="footer">
+    <div class="footer-container">
+
+      <div class="footer-col">
+        <h3>Taco Tempos</h3>
+        <p>Serving Delicious food to everyone.
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Veniam deleniti nam quam cumque ipsam </p>
+      </div>
+
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <p>Email: tacotempos@mywebsite.com</p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Location: Gujarat, India</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">Instagram</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Taca Tempos. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>
